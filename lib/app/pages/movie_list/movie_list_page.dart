@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/api/api_client.dart';
-import '../../../domain/models/movie.dart';
+import '../../../domain/models/movies/movie.dart';
 import 'widgets/movie_card.dart';
 import 'widgets/search_box.dart';
 

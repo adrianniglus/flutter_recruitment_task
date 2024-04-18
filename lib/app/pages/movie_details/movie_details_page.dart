@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import '../../../domain/models/movie_details.dart';
+import '../../../domain/models/movies/movie_details.dart';
 
 @RoutePage()
 class MovieDetailsPage extends StatefulWidget {

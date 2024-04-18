@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter_recruitment_task/domain/models/movie.dart';
-import 'package:flutter_recruitment_task/domain/models/movie_list.dart';
 import 'package:http/http.dart' as http;
+
+import '../../domain/models/movies/movie.dart';
+import '../dtos/movies/movie_list_dto.dart';
 
 class ApiService {
   static const apiKey = '052afdb6e0ab9af424e3f3c8edbb33fb';
@@ -18,8 +19,8 @@ class ApiService {
 
     final response = await http.get(endpoint);
     final json = jsonDecode(response.body);
-    final movieList = MovieList.fromJson(json);
+    final movieList = MovieListDto.fromJson(json);
 
-    return movieList.results;
+    return movieList.results.map((e) => Movie.fromDto(e)).toList();
   }
 }
