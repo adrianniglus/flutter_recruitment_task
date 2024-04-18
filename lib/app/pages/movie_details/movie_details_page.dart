@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_recruitment_task/domain/models/movie_details.dart';
+import '../../../domain/models/movie_details.dart';
 
+@RoutePage()
 class MovieDetailsPage extends StatefulWidget {
   @override
   _MovieDetailsPageState createState() => _MovieDetailsPageState();

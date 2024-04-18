@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_recruitment_task/domain/models/movie.dart';
-import 'package:flutter_recruitment_task/app/pages/movie_list/widgets/movie_card.dart';
-import 'package:flutter_recruitment_task/app/pages/movie_list/widgets/search_box.dart';
-import 'package:flutter_recruitment_task/data/api/api_client.dart';
 
+import '../../../data/api/api_client.dart';
+import '../../../domain/models/movie.dart';
+import 'widgets/movie_card.dart';
+import 'widgets/search_box.dart';
+
+@RoutePage()
 class MovieListPage extends StatefulWidget {
   @override
   _MovieListPage createState() => _MovieListPage();
