@@ -19,7 +19,7 @@ class MoviesRepositoryImpl implements MoviesRepository {
   @override
   Future<Either<Failure, MovieListResponse>> searchMovies(String query) async {
     try {
-      final result = await _moviesDataSource.searchMovies(query, KeyHandler.tmdbApiKey);
+      final result = await _moviesDataSource.searchMovies(query, KeyHandler().getApiKeyByFlavor);
       return Right(MovieListResponse.fromDto(result));
     } catch (e) {
       return Left(
