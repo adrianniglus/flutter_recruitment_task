@@ -51,6 +51,20 @@ android {
         versionName flutterVersionName
     }
 
+    flavorDimensions "environment"
+    productFlavors {
+        staging {
+            dimension "environment"
+            applicationIdSuffix ".staging"
+            manifestPlaceholders = ["appName": "flutter_recruitment_task staging"]
+        }
+        prod {
+            dimension "environment"
+            applicationIdSuffix ""
+            manifestPlaceholders = ["appName": "flutter_recruitment_task"]
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
