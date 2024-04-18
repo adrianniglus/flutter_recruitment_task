@@ -50,3 +50,6 @@ app.*.map.json
 lib/app/utils/translations/generated
 
 ios/build
+
+# environment related
+*.env

@@ -6,6 +6,7 @@ import '../../domain/models/movies/movie_list_response.dart';
 import '../../domain/repositories/movies_repository.dart';
 import '../../domain/utils/api_exception.dart';
 import '../../domain/utils/failure.dart';
+import '../handlers/key_handler.dart';
 
 @Singleton(as: MoviesRepository)
 class MoviesRepositoryImpl implements MoviesRepository {
@@ -15,12 +16,10 @@ class MoviesRepositoryImpl implements MoviesRepository {
 
   final MoviesDataSource _moviesDataSource;
 
-  static const apiKey = '052afdb6e0ab9af424e3f3c8edbb33fb';
-
   @override
   Future<Either<Failure, MovieListResponse>> searchMovies(String query) async {
     try {
-      final result = await _moviesDataSource.searchMovies(query, apiKey);
+      final result = await _moviesDataSource.searchMovies(query, KeyHandler.tmdbApiKey);
       return Right(MovieListResponse.fromDto(result));
     } catch (e) {
       return Left(
