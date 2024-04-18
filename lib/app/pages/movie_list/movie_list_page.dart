@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/api/api_client.dart';
 import '../../../domain/models/movies/movie.dart';
 import 'widgets/movie_card.dart';
 import 'widgets/search_box.dart';
@@ -13,8 +12,6 @@ class MovieListPage extends StatefulWidget {
 }
 
 class _MovieListPage extends State<MovieListPage> {
-  final apiService = ApiService();
-
   Future<List<Movie>> _movieList = Future.value([]);
 
   @override
@@ -70,7 +67,24 @@ class _MovieListPage extends State<MovieListPage> {
   void _onSearchBoxSubmitted(String text) {
     setState(() {
       if (text.isNotEmpty) {
-        _movieList = apiService.searchMovies(text);
+        // Mock data
+        _movieList = Future.value([
+          Movie(
+            title: 'movie 1',
+            voteAverage: 0.0,
+            id: 1,
+          ),
+          Movie(
+            title: 'movie 2',
+            voteAverage: 0.0,
+            id: 2,
+          ),
+          Movie(
+            title: 'movie 3',
+            voteAverage: 0.0,
+            id: 3,
+          ),
+        ]);
       } else {
         _movieList = Future.value([]);
       }
