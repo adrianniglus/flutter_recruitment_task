@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recruitment_task/pages/movie_details/movie_details_page.dart';
-import 'package:flutter_recruitment_task/pages/movie_list/movie_list_page.dart';
-import 'package:flutter_recruitment_task/pages/two_buttons/two_buttons_page.dart';
+import 'package:flutter_recruitment_task/app/pages/movie_details/movie_details_page.dart';
+import 'package:flutter_recruitment_task/app/pages/movie_list/movie_list_page.dart';
+import 'package:flutter_recruitment_task/app/pages/two_buttons/two_buttons_page.dart';
 
 class MovieApp extends StatelessWidget {
   @override

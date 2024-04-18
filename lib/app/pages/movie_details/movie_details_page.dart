@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recruitment_task/models/movie_details.dart';
+import 'package:flutter_recruitment_task/domain/models/movie_details.dart';
 
 class MovieDetailsPage extends StatefulWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_recruitment_task/models/movie.dart';
-import 'package:flutter_recruitment_task/pages/movie_list/movie_card.dart';
-import 'package:flutter_recruitment_task/pages/movie_list/search_box.dart';
-import 'package:flutter_recruitment_task/services/api_service.dart';
+import 'package:flutter_recruitment_task/domain/models/movie.dart';
+import 'package:flutter_recruitment_task/app/pages/movie_list/widgets/movie_card.dart';
+import 'package:flutter_recruitment_task/app/pages/movie_list/widgets/search_box.dart';
+import 'package:flutter_recruitment_task/data/api/api_client.dart';
 
 class MovieListPage extends StatefulWidget {
   @override

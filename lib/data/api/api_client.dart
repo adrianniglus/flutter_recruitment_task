@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_recruitment_task/models/movie.dart';
-import 'package:flutter_recruitment_task/models/movie_list.dart';
+import 'package:flutter_recruitment_task/domain/models/movie.dart';
+import 'package:flutter_recruitment_task/domain/models/movie_list.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
