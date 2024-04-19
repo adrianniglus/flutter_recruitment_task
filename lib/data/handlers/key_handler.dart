@@ -1,13 +1,14 @@
 import 'package:envied/envied.dart';
+import 'package:injectable/injectable.dart';
 
 import 'environment_handler.dart';
 
 part 'key_handler.g.dart';
 
-
 // This class is used to store the API keys
+@singleton
 @Envied(path: '.env')
-final class KeyHandler {
+class KeyHandler {
   @EnviedField(varName: 'TMDB_STAGING_KEY', obfuscate: true)
   static final String _tmdbStagingApiKey = _KeyHandler._tmdbStagingApiKey;
   @EnviedField(varName: 'TMDB_PROD_KEY', obfuscate: true)

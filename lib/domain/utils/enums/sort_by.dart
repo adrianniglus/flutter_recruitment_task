@@ -5,6 +5,7 @@ const _popularityDesc = 'popularity.desc';
 const _voteAverageAsc = 'vote_average.asc';
 const _popularityAsc = 'popularity.asc';
 
+// An enum that represents the different ways to sort movies.
 enum SortBy {
   @JsonValue(_voteAverageDesc)
   voteAverageDesc,

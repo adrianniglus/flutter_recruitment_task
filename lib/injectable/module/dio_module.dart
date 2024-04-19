@@ -5,6 +5,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../data/handlers/environment_handler.dart';
 import '../../data/utils/consts.dart';
 
+
+// This module allows us to inject the Dio client into our classes
 @module
 abstract class ApiModule {
   @singleton

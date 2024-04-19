@@ -23,7 +23,7 @@ class MovieApp extends StatelessWidget {
           ],
           supportedLocales: const [
             Locale('en', ''),
-            // add more locales here
+            // Add more locales here if needed
           ],
           onGenerateTitle: (ctx) => Translation.of(ctx).appTitle,
           theme: ThemeData(primarySwatch: Colors.amber),

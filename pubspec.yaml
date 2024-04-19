@@ -29,6 +29,8 @@ dependencies:
     sdk: flutter
   intl: ^0.18.1
   flutter_localization: ^0.2.0
+  mockito: ^5.4.4
+  bloc_test: ^9.1.7
 
 dev_dependencies:
   flutter_test:

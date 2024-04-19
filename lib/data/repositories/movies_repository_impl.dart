@@ -15,16 +15,18 @@ import '../handlers/key_handler.dart';
 class MoviesRepositoryImpl implements MoviesRepository {
   MoviesRepositoryImpl(
     this._moviesDataSource,
+    this._keyHandler,
   );
 
   final MoviesDataSource _moviesDataSource;
+  final KeyHandler _keyHandler;
 
   // Search movies by query string (title) and return a list of movies
   @override
   Future<Either<Failure, PaginationResponse<Movie>>> searchMovies(MovieQuery query) async {
     try {
       final result =
-          await _moviesDataSource.searchMovies(MovieQueryDto.fromModel(query), KeyHandler().getApiKeyByFlavor);
+          await _moviesDataSource.searchMovies(MovieQueryDto.fromModel(query), _keyHandler.getApiKeyByFlavor);
       return Right(
         PaginationResponse<Movie>(
           page: result.page,
@@ -41,10 +43,11 @@ class MoviesRepositoryImpl implements MoviesRepository {
     }
   }
 
+  // Get movie details by movie id and return a movie object
   @override
   Future<Either<Failure, Movie>> getMovieDetails(int movieId) async {
     try {
-      final result = await _moviesDataSource.getMovieDetails(movieId, KeyHandler().getApiKeyByFlavor);
+      final result = await _moviesDataSource.getMovieDetails(movieId, _keyHandler.getApiKeyByFlavor);
       return Right(Movie.fromDto(result));
     } catch (e) {
       return Left(

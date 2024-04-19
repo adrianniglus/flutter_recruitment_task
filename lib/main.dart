@@ -7,6 +7,7 @@ Future<void> main() async {
   // Ensure the widgets binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the environment handler
+  // This is important to ensure the environment is initialized before the dependencies
   await EnvironmentHandler.init();
   // Initialize the dependencies
   configureDependencies();

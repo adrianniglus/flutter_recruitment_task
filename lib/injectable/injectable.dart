@@ -4,6 +4,8 @@ import 'package:injectable/injectable.dart';
 import 'injectable.config.dart';
 
 // This instance of GetIt is used to register dependencies
+// and to retrieve them throughout the application
+// by injection
 final getIt = GetIt.instance;  
   
 @InjectableInit(  
