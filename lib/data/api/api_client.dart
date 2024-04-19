@@ -20,5 +20,6 @@ abstract class ApiClient {
     @Query('page') required int? page,
     @Query('api_key') required String apiKey,
     @Query('query') String? query,
+    @Query('sort_by') String? sortBy,
   });
 }

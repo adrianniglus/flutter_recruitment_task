@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../domain/models/movies/movie.dart';
 import '../../../../domain/models/movies/movie_query.dart';
 import '../../../../domain/use_cases/search_movie_use_case.dart';
+import '../../../../domain/utils/enums/sort_by.dart';
 import 'movie_list_state.dart';
 
 @injectable
@@ -46,6 +47,14 @@ class MovieListCubit extends Cubit<MovieListState> {
     final query = MovieQuery(
       page: pageKey,
       query: _query,
+      // This sortyBy does nothing. Normally, I would use BE query to sort the movies,
+      // but for this example, I will sort them in the app,
+      // because TMDB API does not support sorting in search query,
+      // wich is a big limitation when using infinite scroll pagination.
+      // I'm leaving this here as an example of how I would do it,
+      // if the API supported it just like /discover endpoints (doesn't break the app
+      // and let you see my approach in this kind of tasks).
+      sortBy: SortBy.voteAverageDesc,
     );
     final result = await _searchMovieUseCase(query);
     emit(
@@ -60,6 +69,10 @@ class MovieListCubit extends Cubit<MovieListState> {
             final nextPageKey = pageKey + 1;
             _pagingController.appendPage(movies, nextPageKey);
           }
+          // Sort movies by vote average in descending order (highest first).
+          // Normally, I would use BE query to sort the movies.
+          // It's important to note that this is not the best practice, to leave this logic in the app.
+          _pagingController.itemList?.sort((a, b) => b.voteAverage.compareTo(a.voteAverage));
           return MovieListState.loaded(
             pagingController: _pagingController,
           );

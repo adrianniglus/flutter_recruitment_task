@@ -22,6 +22,7 @@ class MoviesDataSourceImpl implements MoviesDataSource {
         query: movieQuery.query,
         page: movieQuery.page,
         apiKey: apiKey,
+        sortBy: movieQuery.sortBy,
       );
     } on DioException catch (e) {
       throw ApiException.fromJson(e.getErrorData);

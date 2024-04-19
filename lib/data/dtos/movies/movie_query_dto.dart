@@ -9,10 +9,12 @@ class MovieQueryDto with _$MovieQueryDto {
   const factory MovieQueryDto({
     String? query,
     int? page,
+    String? sortBy,
   }) = _MovieQueryDto;
 
   factory MovieQueryDto.fromModel(MovieQuery movieQuery) => MovieQueryDto(
         query: movieQuery.query,
         page: movieQuery.page,
+        sortBy: movieQuery.sortBy?.jsonValue,
       );
 }
