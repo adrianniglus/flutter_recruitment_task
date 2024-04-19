@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'app/pages/utils/hide_keyboard.dart';
-import 'app/pages/utils/router/app_router.dart';
+import 'app/utils/hide_keyboard.dart';
+import 'app/utils/router/app_router.dart';
+import 'app/utils/translations/generated/l10n.dart';
 
 class MovieApp extends StatelessWidget {
   final _appRouter = AppRouter();
@@ -11,7 +13,19 @@ class MovieApp extends StatelessWidget {
         context: context,
         // MaterialApp.router is used to enable the AutoRoute package
         child: MaterialApp.router(
-          title: 'Movie Browser',
+          // LocalizationsDelegates and supportedLocales are required for the
+          // Translation class to work
+          localizationsDelegates: const [
+            Translation.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', ''),
+            // add more locales here
+          ],
+          onGenerateTitle: (ctx) => Translation.of(ctx).appTitle,
           theme: ThemeData(primarySwatch: Colors.amber),
           routerDelegate: _appRouter.delegate(),
           routeInformationParser: _appRouter.defaultRouteParser(),

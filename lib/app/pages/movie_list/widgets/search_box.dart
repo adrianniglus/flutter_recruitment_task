@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SearchBox extends StatelessWidget {
-  final void Function(String)? onChanged;
+import '../../../utils/translations/generated/l10n.dart';
 
+class SearchBox extends StatelessWidget {
   const SearchBox({
     super.key,
     this.onChanged,
   });
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -22,7 +23,7 @@ class SearchBox extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: Icon(Icons.search),
             border: InputBorder.none,
-            hintText: 'Search...',
+            hintText: Translation.of(context).search,
           ),
           onChanged: onChanged,
         ),

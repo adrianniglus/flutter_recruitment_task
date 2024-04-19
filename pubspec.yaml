@@ -25,6 +25,10 @@ dependencies:
   flutter_bloc: ^8.1.5
   flutter_hooks: ^0.20.5
   infinite_scroll_pagination: ^4.0.0
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
+  flutter_localization: ^0.2.0
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +39,13 @@ dev_dependencies:
   retrofit_generator: ^8.1.0
   injectable_generator: ^2.6.1
   envied_generator: ^0.5.4+1
+
+flutter_intl:
+  enabled: true # Required. Must be set to true to activate the package. Default: false
+  class_name: Translation # Optional. Sets the name for the generated localization class.
+  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should consist of language code and optional script and country codes separated with underscore (e.g. 'en', 'en_GB', 'zh_Hans', 'zh_Hans_CN'). Default: en
+  arb_dir: lib/app/utils/translations/l10n # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n
+  output_dir: lib/app/utils/translations/generated
 
 flutter:
   uses-material-design: true

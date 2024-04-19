@@ -5,9 +5,12 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../../domain/models/movies/movie.dart';
 import '../../../injectable/injectable.dart';
+import '../../utils/app_spacing.dart';
+import '../../utils/translations/generated/l10n.dart';
 import 'cubit/movie_list_cubit.dart';
 import 'cubit/movie_list_state.dart';
 import 'widgets/movie_card.dart';
+import 'widgets/no_items_found_widget.dart';
 import 'widgets/search_box.dart';
 
 @RoutePage()
@@ -25,7 +28,9 @@ class MovieListPage extends StatelessWidget {
 
   void _listener(BuildContext ctx, MovieListState state) => state.mapOrNull(
         failure: (error) => SnackBar(
-          content: error.failure.content != null ? Text(error.failure.content!) : const Text('Something went wrong'),
+          content: error.failure.content != null
+              ? Text(error.failure.content!)
+              : Text(Translation.of(ctx).somethingWentWrong),
         ),
       );
 }
@@ -44,7 +49,7 @@ class _Body extends StatelessWidget {
               },
             ),
           ],
-          title: Text('Movie Browser'),
+          title: Text(Translation.of(context).appTitle),
         ),
         body: Column(
           children: [
@@ -74,21 +79,7 @@ class _MovieList extends StatelessWidget {
               child: PagedListView.separated(
                 pagingController: pagingController,
                 builderDelegate: PagedChildBuilderDelegate<Movie>(
-                  noItemsFoundIndicatorBuilder: (context) => const Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'No matching titles',
-                        ),
-                        const SizedBox(height: 12),
-                        Text(
-                          'Try searching for another movie',
-                        ),
-                        const SizedBox(height: 24),
-                      ],
-                    ),
-                  ),
+                  noItemsFoundIndicatorBuilder: (context) => NoItemsFoundWidget(),
                   animateTransitions: true,
                   itemBuilder: (context, item, index) => MovieCard(
                     title: item.title,
@@ -97,7 +88,7 @@ class _MovieList extends StatelessWidget {
                   ),
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
-                  height: 16,
+                  height: AppSpacing.dimension8,
                 ),
               ),
             ),

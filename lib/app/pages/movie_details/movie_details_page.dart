@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../domain/models/movies/movie_details.dart';
+import '../../utils/app_spacing.dart';
 
 @RoutePage()
 class MovieDetailsPage extends StatefulWidget {
@@ -25,11 +26,11 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
         appBar: AppBar(),
         body: ListView.separated(
           separatorBuilder: (context, index) => Container(
-            height: 1.0,
+            height: AppSpacing.dimension1,
             color: Colors.grey.shade300,
           ),
           itemBuilder: (context, index) => Container(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(AppSpacing.dimension16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -37,7 +38,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                   _details[index].title,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
-                SizedBox(height: 8.0),
+                SizedBox(height: AppSpacing.dimension8),
                 Text(
                   _details[index].content,
                   style: Theme.of(context).textTheme.titleMedium,
