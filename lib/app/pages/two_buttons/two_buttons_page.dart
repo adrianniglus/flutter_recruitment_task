@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'button_two_states.dart';
 
-
+//Decided to leave this page in case it's needed in the future
 @RoutePage()
 class TwoButtonsPage extends StatefulWidget {
   @override

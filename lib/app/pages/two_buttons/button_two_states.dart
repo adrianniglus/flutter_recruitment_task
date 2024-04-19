@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Decided to leave this widget in case it's needed in the future
 class ButtonTwoStates extends StatefulWidget {
   const ButtonTwoStates({
     required this.index,

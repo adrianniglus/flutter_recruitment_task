@@ -8,5 +8,7 @@
     "revenue": "Revenue",
     "shoudIWatchIt": "Should I watch it?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "refresh": "Refresh",
+    "noData": "No data available"
 }

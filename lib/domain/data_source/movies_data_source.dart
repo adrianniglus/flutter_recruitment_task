@@ -4,4 +4,5 @@ import '../../data/dtos/pagination_response_dto.dart';
 
 abstract class MoviesDataSource {
   Future<PaginationResponseDto<MovieDto>> searchMovies(MovieQueryDto movieQuery, String apiKey);
+  Future<MovieDto> getMovieDetails(int movieId, String apiKey);
 }

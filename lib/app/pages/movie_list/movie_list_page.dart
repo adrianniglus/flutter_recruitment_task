@@ -6,7 +6,10 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import '../../../domain/models/movies/movie.dart';
 import '../../../injectable/injectable.dart';
 import '../../utils/app_spacing.dart';
+import '../../utils/router/app_router.gr.dart';
 import '../../utils/translations/generated/l10n.dart';
+import '../common_widgets/app_progress_indicator.dart';
+import '../common_widgets/failure_widget.dart';
 import 'cubit/movie_list_cubit.dart';
 import 'cubit/movie_list_state.dart';
 import 'widgets/movie_card.dart';
@@ -20,17 +23,8 @@ class MovieListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider<MovieListCubit>(
         create: (_) => getIt<MovieListCubit>(),
-        child: BlocConsumer<MovieListCubit, MovieListState>(
-          listener: _listener,
+        child: BlocBuilder<MovieListCubit, MovieListState>(
           builder: (context, state) => const _Body(),
-        ),
-      );
-
-  void _listener(BuildContext ctx, MovieListState state) => state.mapOrNull(
-        failure: (error) => SnackBar(
-          content: error.failure.content != null
-              ? Text(error.failure.content!)
-              : Text(Translation.of(ctx).somethingWentWrong),
         ),
       );
 }
@@ -44,9 +38,7 @@ class _Body extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.movie_creation_outlined),
-              onPressed: () {
-                //TODO implement navigation
-              },
+              onPressed: () => context.router.push(const TwoButtonsRoute()),
             ),
           ],
           title: Text(Translation.of(context).appTitle),
@@ -66,15 +58,14 @@ class _MovieList extends StatelessWidget {
   const _MovieList();
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<MovieListCubit, MovieListState>(
-        builder: (context, state) => state.maybeWhen(
-          orElse: () => const Expanded(
-            child: Center(
-              child: const Center(child: CircularProgressIndicator.adaptive()),
+  Widget build(BuildContext context) => Expanded(
+        child: BlocBuilder<MovieListCubit, MovieListState>(
+          builder: (context, state) => state.maybeWhen(
+            orElse: () => AppProgressIndicator(),
+            failure: (error) => FailureWidget(
+              onRefresh: () => context.read<MovieListCubit>().refresh(),
             ),
-          ),
-          loaded: (pagingController) => Expanded(
-            child: RefreshIndicator(
+            loaded: (pagingController) => RefreshIndicator(
               onRefresh: context.read<MovieListCubit>().refresh,
               child: PagedListView.separated(
                 pagingController: pagingController,
@@ -84,7 +75,7 @@ class _MovieList extends StatelessWidget {
                   itemBuilder: (context, item, index) => MovieCard(
                     title: item.title,
                     rating: '${(item.voteAverage * 10).toInt()}%',
-                    onTap: () {},
+                    onTap: () => context.router.push(MovieDetailsRoute(movie: item)),
                   ),
                 ),
                 separatorBuilder: (context, index) => const SizedBox(

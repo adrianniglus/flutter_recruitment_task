@@ -40,4 +40,18 @@ class MoviesRepositoryImpl implements MoviesRepository {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, Movie>> getMovieDetails(int movieId) async {
+    try {
+      final result = await _moviesDataSource.getMovieDetails(movieId, KeyHandler().getApiKeyByFlavor);
+      return Right(Movie.fromDto(result));
+    } catch (e) {
+      return Left(
+        Failure(
+          content: e is ApiException ? e.message : null,
+        ),
+      );
+    }
+  }
 }

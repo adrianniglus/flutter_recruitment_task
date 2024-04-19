@@ -28,4 +28,16 @@ class MoviesDataSourceImpl implements MoviesDataSource {
       throw ApiException.fromJson(e.getErrorData);
     }
   }
+
+  @override
+  Future<MovieDto> getMovieDetails(int movieId, String apiKey) async {
+    try {
+      return await _apiClient.getMovieDetails(
+        id: movieId,
+        apiKey: apiKey,
+      );
+    } on DioException catch (e) {
+      throw ApiException.fromJson(e.getErrorData);
+    }
+  }
 }

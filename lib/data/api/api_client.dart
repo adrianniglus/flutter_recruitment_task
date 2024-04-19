@@ -22,4 +22,10 @@ abstract class ApiClient {
     @Query('query') String? query,
     @Query('sort_by') String? sortBy,
   });
+
+  @GET(ApiEndpoints.movieDetails)
+  Future<MovieDto> getMovieDetails({
+    @Path('id') required int id,
+    @Query('api_key') required String apiKey,
+  });
 }

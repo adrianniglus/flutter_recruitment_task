@@ -7,4 +7,5 @@ import '../utils/failure.dart';
 
 abstract class MoviesRepository {
   Future<Either<Failure, PaginationResponse<Movie>>> searchMovies(MovieQuery query);
+  Future<Either<Failure, Movie>> getMovieDetails(int movieId);
 }
