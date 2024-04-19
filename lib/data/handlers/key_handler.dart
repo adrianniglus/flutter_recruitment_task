@@ -4,6 +4,8 @@ import 'environment_handler.dart';
 
 part 'key_handler.g.dart';
 
+
+// This class is used to store the API keys
 @Envied(path: '.env')
 final class KeyHandler {
   @EnviedField(varName: 'TMDB_STAGING_KEY', obfuscate: true)
@@ -11,6 +13,7 @@ final class KeyHandler {
   @EnviedField(varName: 'TMDB_PROD_KEY', obfuscate: true)
   static final String _tmdbProdApiKey = _KeyHandler._tmdbProdApiKey;
 
+  // This method is used to get the API key based on the current environment
   String get getApiKeyByFlavor {
     switch (EnvironmentHandler.current) {
       case EnvironmentType.prod:

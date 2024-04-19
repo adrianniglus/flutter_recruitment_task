@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SearchBox extends StatelessWidget {
-  final void Function(String)? onSubmitted;
+  final void Function(String)? onChanged;
 
   const SearchBox({
     super.key,
-    this.onSubmitted,
+    this.onChanged,
   });
 
   @override
@@ -24,7 +24,7 @@ class SearchBox extends StatelessWidget {
             border: InputBorder.none,
             hintText: 'Search...',
           ),
-          onSubmitted: onSubmitted,
+          onChanged: onChanged,
         ),
       );
 }

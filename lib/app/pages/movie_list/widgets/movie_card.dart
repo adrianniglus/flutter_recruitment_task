@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 class MovieCard extends StatelessWidget {
-  final String title;
-  final String rating;
-  final VoidCallback onTap;
-
   const MovieCard({
-    super.key,
     required this.title,
     required this.rating,
     required this.onTap,
+    super.key,
   });
+  final String title;
+  final String rating;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) => InkWell(

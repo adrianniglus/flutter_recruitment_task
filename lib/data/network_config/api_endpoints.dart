@@ -1,3 +1,4 @@
+// This class contains all the api endpoints
 class ApiEndpoints {
   const ApiEndpoints._();
 
