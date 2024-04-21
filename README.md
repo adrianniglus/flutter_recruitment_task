@@ -1,32 +1,95 @@
-# MovieBrowser
+# ⚡ Flutter Recruitment Task ⚡
+This is my recruitment task. I did some changes and added several "real life scenario" development features like flavors, analysis options, build options, TMDB API Key encryption.
 
-This app is a part of recruitment task for a Flutter Developer position at Droids On Roids. It allows users to browse movie database and look for some interesting financial statistics. It uses The Movie Database API as a source of data about movies, its documentation is available [here](https://developers.themoviedb.org/3/getting-started/introduction).
+Additionaly I decided to add translations, keyboard hiding and of course our beloved unit tests!
 
-## Recruitment task
+Hope you like it :)
 
-Right now, app consists of only one screen: movie list. It allows user to search movies in The Movie Database. Your task is to add some new features to our app:
+## 🚀 Getting Started
+1. Create `.env` file in main app folder
 
-1. As a warm up, sort movies fetched from the api by vote average.
+    Inside of it, create 2 variables and provide keys:
+    ```shell
+    TMDB_STAGING_KEY=[your_tmdb_key]
+    TMDB_PROD_KEY=[your_tmdb_key]
+    ```
+    Use the key that you provided in this task .zip file repository.
 
-2. Next, implement navigation between movie list and movie details screen. To not spent too much time on programming UI, we've already implemented movie details screen for you. It is available as `MovieDetailsPage` class.
+2. Generate app files:
 
-3. After that, fetch detailed information about the selected movie and show its title (as a navigation bar title), budget and revenue (formatted as values in dollars).
+    To create necessary app files just use:
+    ```shell
+    flutter pub run build_runner build --delete-conflicting-outputs
+    ```
 
-4. Finally, let's add some logic to the app. As you can see, there is one more label on the Movie Details screen: the "Should I watch it today?" label. Let's say, that I should watch the movie today, **if today is sunday and profit from the movie is bigger than $1000000** (by profit I mean a difference between revenue and budget). So, under that label show value "Yes" if the following criteria are met or "No", if they are not.
+    and to create translation files use:
+    ```shell
+    flutter pub run intl_utils:generate
+    ```
+3. Run app:
 
-## Tips
+    To run app use `flutter run --flavor [wanted_flavor]` eg:
+    ```shell
+    flutter run --flavor staging
+    ```
+This works both for Android and Ios. 
 
-1. Do not worry about making a good looking UI - that's what designers are for :) Focus on writing clean and maintainable code.
+### Available flavors
 
-2. If you think you have a better way of implementing some of the features that are already in the repo, feel free to refactor the existing code.
 
-3. After you're done coding, submit a PR with your changes - that'll make it easier for us to review your code.
+|flavor name|status|description| bundle/app ID          |
+|---|---|---|------------------------|
+|`staging`|in progress|flavor/env for internal testing| `com.example.flutter_recruitment_task.staging`      |
+|`prod`|in progress|flavor for production| `com.example.flutter_recruitment_task` |
 
-4. If anything about the task is not clear don't be afraid to ask questions.
+# 📚 Architecture and tech stack
+App and data flow:
+DataSource -> Repository -> UseCase -> Cubit -> Page
 
-5. To regenerate JSON models, use the following command:
+1. **DataSource** - calls to native platforms, external libraries and performs heavy lifting
+2. **Repository** - calls data source and performs error handling
+3. **UseCase** - represents single business process performed in app
+4. **Cubit & Page** - presentation layer operations
+
+## 🚩 State management
+
+- For business logic use [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+
+## 📂 File structure
+This app's file structure is based on [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 ```
-flutter pub run build_runner build --delete-conflicting-outputs
+lib/
+    app/                         	    <-- application layer
+        pages/
+          movie_list_page/
+	        movie_list_page.dart        <-- page
+            cubit/
+	            movie_list_cubit.dart	<-- cubit
+	            movie_list_state.dart   <-- state
+        common_widgets/                 <-- custom widgets
+        utils/                    	    <-- utility classes/constants, translations, router
+    data/                         	    <-- data layer
+        api/
+            auth_client.dart            <-- calls to REST API
+        repositories/
+			movie_repository_impl.dart 	<-- handles calls to data source and error handling
+        data_source/
+		    movie_data_source.dart      <-- calls to data source eg. data base or REST API
+        dtos/                           <-- data transfer objects
+        handlers/                       <-- handlers eg. REST API environments or keys
+        network_config/                 <-- REST API endpoints constants
+        utils/                    	    <-- utility classes/constants
+    domain/                       	    <-- domain layer (business and enterprise)
+        models/                         <-- enterprise entities (core classes of the app)
+            movies/
+                movie.dart              <-- single enterprise entity
+        use_case/                       <-- business processes e.g. Search Movie, Get Movie Details etc..
+          get_movie_details_use_case.dart       <-- example usecase extends `UseCase` or `NoParamUseCaseSimple`
+        repositories/                   <-- abstract classes that define functionality for data layer
+        data_source/                    <-- abstract classes that define functionality for data layer
+        utils/                    	    <-- utility classes/constants, enums, extensions
+    main.dart                     	    <-- entry point
+    movie_app.dart                     	<-- App class, contains global configurations
+
 ```
 
-Good luck!

@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_recruitment_task/app/pages/movie_list/sub_pages/movie_details/cubit/movie_details_cubit.dart';
-import 'package:flutter_recruitment_task/app/pages/movie_list/sub_pages/movie_details/cubit/movie_details_state.dart';
+import 'package:flutter_recruitment_task/app/pages/movie_list_page/sub_pages/movie_details/cubit/movie_details_cubit.dart';
+import 'package:flutter_recruitment_task/app/pages/movie_list_page/sub_pages/movie_details/cubit/movie_details_state.dart';
 import 'package:flutter_recruitment_task/domain/models/movies/movie.dart';
 import 'package:flutter_recruitment_task/domain/utils/failure.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/app_spacing.dart';
-import '../../utils/translations/generated/l10n.dart';
+import '../utils/app_spacing.dart';
+import '../utils/translations/generated/l10n.dart';
 
 
 // A widget to display when the data fails to load
