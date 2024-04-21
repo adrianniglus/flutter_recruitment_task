@@ -1,5 +1,5 @@
 # ⚡ Flutter Recruitment Task ⚡
-This is my recruitment task. I did some changes and added several "real life scenario" development features like flavors, analysis options, build options, TMDB API Key encryption.
+This is my recruitment task. I did some changes and added several "real life scenario" development features like flavors, analysis options, build options, TMDB API Key encryption and fvm support.
 
 Additionaly I decided to add translations, keyboard hiding and of course our beloved unit tests!
 
