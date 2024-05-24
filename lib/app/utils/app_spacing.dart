@@ -1,0 +1,31 @@
+abstract class AppSpacing {
+  static const double dimension0 = 0;
+  static const double dimension1 = 1;
+  static const double dimension2 = 2;
+  static const double dimension4 = 4;
+  static const double dimension6 = 6;
+  static const double dimension8 = 8;
+  static const double dimension10 = 10;
+  static const double dimension12 = 12;
+  static const double dimension14 = 14;
+  static const double dimension16 = 16;
+  static const double dimension18 = 18;
+  static const double dimension20 = 20;
+  static const double dimension22 = 22;
+  static const double dimension24 = 24;
+  static const double dimension28 = 28;
+  static const double dimension32 = 32;
+  static const double dimension36 = 36;
+  static const double dimension38 = 38;
+  static const double dimension40 = 40;
+  static const double dimension42 = 42;
+  static const double dimension44 = 44;
+  static const double dimension48 = 48;
+  static const double dimension50 = 50;
+  static const double dimension52 = 52;
+  static const double dimension54 = 54;
+  static const double dimension56 = 56;
+  static const double dimension60 = 60;
+  static const double dimension64 = 64;
+  static const double dimension72 = 72;
+}

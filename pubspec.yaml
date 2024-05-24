@@ -1,10 +1,10 @@
 name: flutter_recruitment_task
 description: Flutter recruitment task.
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
   flutter: 3.19.2
 
 dependencies:
@@ -12,12 +12,41 @@ dependencies:
     sdk: flutter
   json_annotation: 4.8.1
   http: 1.2.1
+  auto_route: ^8.0.3
+  freezed: ^2.5.2
+  retrofit: ^4.1.0
+  get_it: ^7.7.0
+  injectable: ^2.4.1
+  dio: ^5.4.3+1
+  pretty_dio_logger: ^1.3.1
+  package_info_plus: ^7.0.0
+  dartz: ^0.10.1
+  envied: ^0.5.4+1
+  flutter_bloc: ^8.1.5
+  infinite_scroll_pagination: ^4.0.0
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
+  flutter_localization: ^0.2.0
+  mockito: ^5.4.4
+  bloc_test: ^9.1.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: 2.4.8
   json_serializable: 6.7.1
+  auto_route_generator: ^8.0.0
+  retrofit_generator: ^8.1.0
+  injectable_generator: ^2.6.1
+  envied_generator: ^0.5.4+1
+
+flutter_intl:
+  enabled: true # Required. Must be set to true to activate the package. Default: false
+  class_name: Translation # Optional. Sets the name for the generated localization class.
+  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should consist of language code and optional script and country codes separated with underscore (e.g. 'en', 'en_GB', 'zh_Hans', 'zh_Hans_CN'). Default: en
+  arb_dir: lib/app/utils/translations/l10n # Optional. Sets the directory of your ARB resource files. Provided value should be a valid path on your system. Default: lib/l10n
+  output_dir: lib/app/utils/translations/generated
 
 flutter:
   uses-material-design: true

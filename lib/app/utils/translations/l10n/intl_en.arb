@@ -1,0 +1,14 @@
+{
+    "appTitle": "Movie Browser",
+    "noMoviesFound": "No movies found",
+    "searchAnotherTitle": "Try searching for another title",
+    "search": "Search...",
+    "somethingWentWrong": "Something went wrong",
+    "budget": "Budget",
+    "revenue": "Revenue",
+    "shoudIWatchIt": "Should I watch it?",
+    "yes": "Yes",
+    "no": "No",
+    "refresh": "Refresh",
+    "noData": "No data available"
+}
